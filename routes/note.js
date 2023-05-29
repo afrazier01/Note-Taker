@@ -2,14 +2,14 @@ const router = require('express').Router();
 const { writeFile, read } = require('fs');
 const {readFile} = require('fs/promises')
 const util = require('util')
-generateID =require('unique-id-generator')
+generateID = require('unique-id-generator')
 
 router.get('/', (req,res) => {
     console.info(`${req.method} request received`)
     readFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });
 
-const listData = [];
+
 router.post('/', (req,res) => {
     console.info(`${req.method} request received`)
 
@@ -21,9 +21,11 @@ router.post('/', (req,res) => {
             status: 'success',
             data: req.body,
         };
-
-        newNote = req.body,generateID()
-    
+        const note = req.body
+        const id = {id: generateID()}
+        
+        //use Object.assign to create new object that includes unique id
+        newNote = Object.assign(note,id);
         console.info(newNote);
         
 
@@ -41,13 +43,6 @@ router.post('/', (req,res) => {
             //overwrite db.json file
             writeFile('./db/db.json', newList , (err) => err ? console.error(err) : console.info('Data successfully written!'));
         });
-
-        
-
-        
-        // writeFile('./db/db.json', JSON.stringify(data), (err) => {
-        //     err ? console.error(err) : console.info('Data successfully written')
-        // });
 
         res.json(`A note containing the message '${response.data}' was received.`)
     } else {
