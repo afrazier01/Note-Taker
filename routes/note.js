@@ -36,15 +36,11 @@ router.post('/', (req,res) => {
         
         //use Object.assign to create new object that includes unique id
         newNote = Object.assign(note,id);
-        console.info(newNote);
         
-
         readFile('./db/db.json').then((data) => {
 
             const listData  = JSON.parse(data);
-            console.info(`\nThere are/is ${listData.length} notes currently`);
             listData.push(newNote);
-            console.info(`You have added a new note! Now there are ${listData.length} notes\n`);
             
             //stringify new list
             const newList = JSON.stringify(listData);
