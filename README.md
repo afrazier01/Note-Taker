@@ -20,7 +20,7 @@
   Once the webpage is open, it will render the existing notes on the left. You can add a note by first filling in the title and description, then a save button will appear in the top right. When the save button is click it will add the note to the left column. You can render a note description by clicking the title, and clicking the trash icon next to the title will permanently remove the note.
 
   ![Screenshot of deployed website](./public/assets/images/screenshot.png)
-  Click [here](https://taes-note-taker.herokuapp.com/) to go to my deployed webpage on Heroku. 
+  Click [here](https://taes-note-taker.herokuapp.com/) to go to my deployed webpage on Heroku. `link disabled until further notice`
   
 ---
   ## License
